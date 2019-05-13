@@ -1,6 +1,6 @@
-FROM biseque/steamcmd
-#FROM cm2network/steamcmd
-MAINTAINER https://github.com/dtandersen/stationeers
+#FROM biseque/steamcmd
+FROM cm2network/steamcmd:root
+LABEL MAINTAINER https://github.com/dtandersen/stationeers
 
 #ARG MANIFEST=6290103400087969170
 #USER root
@@ -8,7 +8,7 @@ MAINTAINER https://github.com/dtandersen/stationeers
 #COPY stationeers.txt /home/steam
 #COPY update.sh /home/steam
 RUN apt-get update && \
-  apt-get install pwgen -y
+  apt-get install -y pwgen gosu
 #RUN  /home/steam/steamcmd/steamcmd.sh +quit && \
 #  /home/steam/steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/steam/stationeers +download_depot 600760 600762 $MANIFEST +quit && \
 
@@ -27,6 +27,7 @@ COPY docker-entrypoint.sh /
 
 VOLUME /home/steam/stationeers
 
-EXPOSE 27500/udp 27015/udp
+EXPOSE 27500/udp 27500/tcp 27015/udp
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD [ "rocketstation_DedicatedServer.x86_64" ]
