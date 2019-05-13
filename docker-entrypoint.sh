@@ -4,7 +4,6 @@ id
 BASE=/home/steam/stationeers
 STEAMCMD=/home/steam/steamcmd/steamcmd.sh
 #STEAMCMD=/steamcmd/steamcmd.sh
-BETA=public
 
 if [ "$1" = 'rocketstation_DedicatedServer.x86_64' ] && [ "$(id -u)" = '0' ]; then
 
@@ -17,7 +16,7 @@ fi
 if [ "$1" = 'rocketstation_DedicatedServer.x86_64' ]; then
 
   # update dedicated server
-  $STEAMCMD +login anonymous +force_install_dir $BASE +app_update 600760 -beta $BETA validate +quit
+  $STEAMCMD +login anonymous +force_install_dir $BASE +app_update 600760 -beta $BRANCH validate +quit
 
   # create default.ini if it doesn't exist
   if [ ! -f $BASE/default.ini ]; then

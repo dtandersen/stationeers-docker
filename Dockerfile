@@ -23,6 +23,7 @@ RUN apt-get update && \
 #  mkdir -p /root/.config/unity3d/Rocketwerkz/rocketstation && \
 #  ln -s /var/opt/stationeers/log/Player.log /root/.config/unity3d/Rocketwerkz/rocketstation/Player.log
 
+ENV BRANCH=public
 COPY docker-entrypoint.sh /
 
 VOLUME /home/steam/stationeers
