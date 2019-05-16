@@ -31,4 +31,4 @@ fi
 
 export PATH=/home/steam/stationeers:$PATH
 cd $BASE
-exec "$@" -batchmode -nographics -autostart -basedirectory=/home/steam/stationeers
+exec "$@" -batchmode -nographics -autostart -basedirectory=/home/steam/stationeers | tee -a /home/steam/stationeers/stationeers.log
