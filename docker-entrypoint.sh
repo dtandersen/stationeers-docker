@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -Eeox pipefail
 id
-BASE=/home/steam/stationeers
-STEAMCMD=/home/steam/steamcmd/steamcmd.sh
+export BASE=/home/steam/stationeers
+export STEAMCMD=/home/steam/steamcmd/steamcmd.sh
 #STEAMCMD=/steamcmd/steamcmd.sh
 
 if [ "$1" = 'rocketstation_DedicatedServer.x86_64' ] && [ "$(id -u)" = '0' ]; then
@@ -16,7 +16,7 @@ fi
 if [ "$1" = 'rocketstation_DedicatedServer.x86_64' ]; then
 
   # update dedicated server
-  $STEAMCMD +login anonymous +force_install_dir $BASE +app_update 600760 -beta $BRANCH validate +quit
+  $STEAMCMD +login anonymous +force_install_dir $BASE +app_update 600760 -beta $BRANCH validate $STEAMCMD_EXTRA +quit
 
   # create default.ini if it doesn't exist
   if [ ! -f $BASE/default.ini ]; then
@@ -29,6 +29,14 @@ if [ "$1" = 'rocketstation_DedicatedServer.x86_64' ]; then
 
 fi
 
-export PATH=/home/steam/stationeers:$PATH
-cd $BASE
-exec "$@" -batchmode -nographics -autostart -basedirectory=/home/steam/stationeers | tee -a /home/steam/stationeers/stationeers.log
+if [ "$1" = 'rocketstation_DedicatedServer.x86_64' ]; then
+  export PATH=/home/steam/stationeers:$PATH
+  cd $BASE
+  if [ -f prestart.sh ]; then
+    chmod +x prestart.sh
+    ./prestart.sh
+  fi
+  exec "$@" -batchmode -nographics -autostart -basedirectory=/home/steam/stationeers | tee -a /home/steam/stationeers/stationeers.log
+else
+  exec "$@"
+fi

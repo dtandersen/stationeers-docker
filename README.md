@@ -133,3 +133,11 @@ cat << EOF > ~/.srcon
 }
 srcon status
 ```
+
+-e STEAMCMD_EXTRA="+workshop_download_item 544550 1322471261"
+
+#!/bin/bash -x
+$STEAMCMD +login anonymous +force_install_dir $BASE +workshop_download_item 544550 1322471261 +quit
+#cp -f /home/steam/stationeers/steamapps/workshop/content/544550/1322471261/GameData/autolathe.xml /home/steam/stationeers/rocketstation_DedicatedServer_Data/StreamingAssets/Data/autolathe.xml
+mkdir -p /home/steam/stationeers/rocketstation_DedicatedServer_Data/mods/OreProducer
+cp -r /home/steam/stationeers/steamapps/workshop/content/544550/1322471261/* /home/steam/stationeers/rocketstation_DedicatedServer_Data/mods/OreProducer
