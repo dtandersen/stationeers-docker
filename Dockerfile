@@ -1,8 +1,8 @@
-FROM steamcmd/steamcmd:latest
+FROM steamcmd/steamcmd
 LABEL MAINTAINER https://github.com/dtandersen/stationeers
 
 RUN apt-get update && \
-  yum install -y pwgen gosu
+  apt-get install -y pwgen gosu
 
 ENV BRANCH=public
 COPY docker-entrypoint.sh /
