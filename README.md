@@ -64,7 +64,9 @@ Example `default.ini`:
 SERVERNAME=Stationeers
 GAMEPORT=27500
 UPDATERPORT=27015
+MODPATH=C:\Stationeers\mods\
 PASSWORD=
+ADMINPASSWORD=AdminPass
 MAPNAME=Moon
 DESCRIPTION=Stationeers
 MAXPLAYER=10
@@ -102,6 +104,7 @@ Saves and configuration are stored at `/var/opt/stationeers`.
 |   `-- opt
 |      `-- stationeers
 |          |-- default.ini
+|          |-- blocked.txt
 |          |-- saves
 |          |   |-- mysave1
 |          |   `-- mysave2
