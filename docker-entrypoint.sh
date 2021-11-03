@@ -5,13 +5,13 @@ export BASE=/home/steam/stationeers
 export STEAMCMD=/home/steam/steamcmd/steamcmd.sh
 #STEAMCMD=/steamcmd/steamcmd.sh
 
-if [ "$1" = 'rocketstation_DedicatedServer.x86_64' ] && [ "$(id -u)" = '0' ]; then
+#if [ "$1" = 'rocketstation_DedicatedServer.x86_64' ] && [ "$(id -u)" = '0' ]; then
 
   # take ownership of stationeers
   # chown -R steam:steam $BASE
   #exec gosu steam "$BASH_SOURCE" "$@"
 
-fi
+#fi
 
 if [ "$1" = 'rocketstation_DedicatedServer.x86_64' ]; then
 
