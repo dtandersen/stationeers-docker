@@ -2,7 +2,7 @@
 set -Eeox pipefail
 id
 export BASE=/home/steam/stationeers
-export STEAMCMD=/home/steam/steamcmd/steamcmd.sh
+export STEAMCMD=/usr/bin/steamcmd
 #STEAMCMD=/steamcmd/steamcmd.sh
 
 #if [ "$1" = 'rocketstation_DedicatedServer.x86_64' ] && [ "$(id -u)" = '0' ]; then
