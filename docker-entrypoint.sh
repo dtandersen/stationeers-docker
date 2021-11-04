@@ -28,10 +28,13 @@ if [ "$1" = 'rocketstation_DedicatedServer.x86_64' ]; then
   if [ ! -f $DEFAULT_INI ]; then
     cp "$APP_DIR/rocketstation_DedicatedServer_Data/StreamingAssets/default.ini" "$PROFILE_DIR"
     # change default password
+    RCONPASSWORD="${RCONPASSWORD:$(pwgen 7 1)}"
+    ADMINPASSWORD="${ADMINPASSWORD:$(pwgen 7 1)}"
+    PASSWORD="${PASSWORD:$(pwgen 7 1)}"
     sed -i "s/^SERVERNAME=.*/SERVERNAME=$WORLDTYPE Base $((1 + $RANDOM % 1000))/g" $DEFAULT_INI
-    sed -i s/^RCONPASSWORD=.*/RCONPASSWORD=$(pwgen 7 1)/g $DEFAULT_INI	
-    sed -i s/^ADMINPASSWORD=.*/ADMINPASSWORD=$(pwgen 7 1)/g $DEFAULT_INI
-    sed -i s/^PASSWORD=.*/PASSWORD=$(pwgen 7 1)/g $DEFAULT_INI
+    sed -i s/^RCONPASSWORD=.*/RCONPASSWORD=$RCONPASSWORD/g $DEFAULT_INI
+    sed -i s/^ADMINPASSWORD=.*/ADMINPASSWORD=$ADMINPASSWORD/g $DEFAULT_INI
+    sed -i s/^PASSWORD=.*/PASSWORD=$PASSWORD/g $DEFAULT_INI
 #    sed -i s/^WORLDNAME=.*/WORLDNAME=$WORLDNAME/g $DEFAULT_INI
     sed -i s/^MAPNAME=.*/MAPNAME=$WORLDTYPE/g $DEFAULT_INI
   fi
